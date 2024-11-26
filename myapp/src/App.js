@@ -4,6 +4,8 @@ import {BrowserRouter as Router,Routes,Link,navLink, Route} from 'react-router-d
 import Home from './components/Home'
 import Contactus from './components/Contactus'
 import Aboutus from './components/Aboutus'
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         </ul>
       </nav>
         <Routes>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path='/Aboutus' element={<Aboutus/>}/>
           <Route path='/Contactus' element={<Contactus/>}/>
