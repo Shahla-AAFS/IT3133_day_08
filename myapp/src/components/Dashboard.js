@@ -1,5 +1,5 @@
 export default function Dashboard() {
     return(
-        <h1>Logoin here</h1>
+        <h1>Hello Admin</h1>
     )
 }
