@@ -1,24 +1,18 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Login = ({ setAuth }) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState('');
+export default function Login() {
+  {
+  const [username, setUsername] = useState({username:"",password:"",error:""})
+  //const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate()
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      localStorage.setItem('token', res.data.token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`
-      setAuth(true)
-      navigate('/dashboard') // Redirect to home page after successful login
-    } catch (error) {
-      setErrorMessage('Login failed. Please check your credentials.')
-      
-    }
+  const getTextInput=(e)=>{
+    const{name,value}=e.target;
+    setUsername((prevUser)=>({
+      ...prevUser,[name]:value,
+    }))
   }
+
   
   return (
   
