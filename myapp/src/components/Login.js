@@ -1,41 +1,43 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+export default function Login(){
+    const[user,setUser]=useState({username:"",password:"",error:""})
+    const navigate=useNavigate();
+    const getTextInput=(e)=>{
+        const{name,value}=e.target;
+        setUser((prevUser)=>({
+            ...prevUser,[name]:value,
+        }))
 
-export default function Login() {
-  {
-  const [username, setUsername] = useState({username:"",password:"",error:""})
-  //const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate()
-  const getTextInput=(e)=>{
-    const{name,value}=e.target;
-    setUsername((prevUser)=>({
-      ...prevUser,[name]:value,
-    }))
-  }
 
-  
-  return (
-  
-    <div className="auth-container">
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-    <form onSubmit={handleSubmit} className="auth-form">
-        <h2>Login</h2>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        /> <br></br>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        /><br></br>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  )
+    }
+    const aunthenticate=()=>{
+        if(user.username === "Admin" && user.pwd ==="abc@123"){
+            setUser({username: "",pwd:"",error:""})
+            navigate('/dash');
+        }else{
+            setUser({'error':'Please check your username and password !'})
+        }
+    }
+    return(
+        <div>
+            <h1>Login here</h1>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" onChange={getTextInput} /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="pwd" onChange={getTextInput} /></td>
+                </tr>
+                <tr>
+                    <td style={{ color: 'red' }} colSpan={2}>{user.error}</td>
+                </tr>
+            </table>
+            <button onClick={aunthenticate}>Login</button>
+
+
+        </div>
+    );
 }
-
-export default Login
